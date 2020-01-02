@@ -13,6 +13,8 @@ namespace Pinch.SDK.Payments
         public DateTime TransactionDate { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }
+        public DateTime EstimatedTransferDate { get; set; }
+        public DateTime ActualTransferDate { get; set; }
 
         public Payer Payer { get; set; }
         public IEnumerable<Attempt> Attempts { get; set; }
