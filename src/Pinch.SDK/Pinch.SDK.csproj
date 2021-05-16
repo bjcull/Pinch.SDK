@@ -1,20 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+  
+    <!-- General -->
+    <AssemblyName>Pinch.SDK</AssemblyName>    
     <Summary>The official Pinch Payments SDK</Summary>
     <Description>The easiest way to integrate your .net application with Pinch Payments. Create payers, add payments, receive webhooks, fetch payments, get paid. Really all the good stuff. It's for Australian businesses if you didn't already know. I'll assume you did if you got this far, if not, Welcome! but you should probably check out getpinch.com.au to get up to speed.</Description>
     <AssemblyTitle>Pinch Payments</AssemblyTitle>
-    <Authors>Ben Cull</Authors>
+    <Authors>Ben Cull,Anthony Zigenbine</Authors>
+
+    <!-- Build settings -->
     <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AssemblyName>Pinch.SDK</AssemblyName>
+    
+    <!-- NuGet settings -->
     <PackageId>Pinch.SDK</PackageId>
     <PackageTags>payments;pinch;sdk;direct debit</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/PinchPayments/Pinch.SDK/master/assets/img/circle_logo_64x64.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/PinchPayments/Pinch.SDK</PackageProjectUrl>
     <RepositoryUrl>https://github.com/PinchPayments/Pinch.SDK</RepositoryUrl>
-    <Version>0.18.1-refunds2</Version>
+    <RepositoryType>git</RepositoryType>
+    <PackageIcon>circle_logo_64x64.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+
+    <!-- SourceLink settings -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../assets/img/circle_logo_64x64.png">
+      <Pack>true</Pack>
+      <PackagePath>$(PackageIconUrl)</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.1.1" />
@@ -26,9 +48,5 @@
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
-
-  <Target Name="PostcompileScript" AfterTargets="Build" Condition=" '$(IsCrossTargetingBuild)' != 'true' ">
-    <Exec Command="dotnet pack --no-build --configuration $(Configuration)" />
-  </Target>
 
 </Project>
