@@ -2,7 +2,7 @@ on:
   push:
     branches:
       #- master
-      - github-workflow
+      #- github-workflow
 
 env:
   # Stop wasting time caching packages
