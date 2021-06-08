@@ -8,7 +8,8 @@ namespace Pinch.SDK.Merchants
 {
     public class MerchantClient : BaseClient
     {
-        public MerchantClient(PinchApiOptions options, Func<bool, Task<string>> getAccessToken, Func<HttpClient> httpClientFactory) 
+        public MerchantClient(PinchApiOptions options, Func<bool, Task<string>> getAccessToken,
+            Func<HttpClient> httpClientFactory)
             : base(options, getAccessToken, httpClientFactory)
         {
         }
@@ -72,6 +73,16 @@ namespace Pinch.SDK.Merchants
 
             return response.ToApiResponse();
         }
-    }
 
+        /// <summary>
+        /// Create an expiring identity verification link for a contact
+        /// </summary>
+        /// <param name="contactId">Contact Id in `con_XXXXXXXXXXXXXX` format.</param>
+        /// <returns></returns>
+        public async Task<ApiResponse<IdentityVerification>> CreateIdentityVerificationLink(string contactId)
+        {
+            var response = await PostHttp<IdentityVerification>($"merchants/generate-verification/{contactId}");
+            return response.ToApiResponse();
+        }
+    }
 }

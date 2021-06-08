@@ -32,6 +32,11 @@ namespace Pinch.SDK
             return await SendHttpFile(() => new HttpRequestMessage(HttpMethod.Get, Options.BaseUri + url));
         }
 
+        protected async Task<QuickResponse<T>> PostHttp<T>(string url)
+        {
+            return await SendHttp<T>(() => new HttpRequestMessage(HttpMethod.Post, Options.BaseUri + url));
+        }
+
         protected async Task<QuickResponse<T>> PostHttp<T>(string url, Dictionary<string, string> parameters)
         {            
             return await SendHttp<T>(() => new HttpRequestMessage(HttpMethod.Post, Options.BaseUri + url)

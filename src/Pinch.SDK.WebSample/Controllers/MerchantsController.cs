@@ -15,7 +15,7 @@ namespace Pinch.SDK.WebSample.Controllers
     public class MerchantsController : BaseController
     {
         public MerchantsController(IOptions<PinchSettings> settings) : base(settings)
-        {            
+        {
         }
 
         public async Task<IActionResult> Index()
